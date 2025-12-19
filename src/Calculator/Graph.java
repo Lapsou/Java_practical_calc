@@ -33,7 +33,7 @@ public class Graph {
 		pnl.add(new JButton("+"));
 		pnl.add(new JButton("-"));
 		pnl.add(new JButton("*"));
-		pnl.add(new JButton("/"));
+		pnl.add(new JButton("6"));
 
 
 		calc.getContentPane().add(BorderLayout.EAST,pnl);
