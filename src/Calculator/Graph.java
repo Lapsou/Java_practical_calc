@@ -8,7 +8,12 @@ import java.awt.*;
 
 class AllColor{
 	static public Color MainColor = new Color(0xcafafc);
+
+	int getMainColor (){
+		return 0xff0000;
+	}
 }
+
 
 // Java Swing : JFrame <----- Frame
 public class Graph {
