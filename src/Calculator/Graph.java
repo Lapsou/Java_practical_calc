@@ -2,16 +2,16 @@ package Calculator;
 
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 
 class AllColor{
 	static public Color MainColor = new Color(0xcafafc);
-
-	int getMainColor (){
-		return 0xff0000;
-	}
 }
 
 
@@ -20,24 +20,32 @@ public class Graph {
 	public static void main() {
 		JFrame calc = new JFrame("Calculator");
 
-		JPanel pnl = new JPanel();
+		Box display = Box.createVerticalBox();	// box layout with panale
+		display.setBorder(BorderFactory.createEmptyBorder(1,1,1,1));
 
-		calc.getContentPane().setBackground(AllColor.MainColor);
-		pnl.setBackground(AllColor.MainColor);
-		pnl.setLayout(new BoxLayout(pnl,BoxLayout.Y_AXIS));
+		JTextArea history_area = new JTextArea();
+		JScrollPane history = new JScrollPane(history_area,
+												JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+												JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
+
+
+		history_area.setRows(10);
+		history_area.setEditable(false);
+		history.setBorder(BorderFactory.createEmptyBorder(1,1,1,1));
+
+		JTextField equation_display = new JTextField();
+
+
+		display.add(history);
+		display.add(equation_display);
+
+
+
+		calc.getContentPane().add(BorderLayout.NORTH,display);
 
 		calc.setSize(400,400);
 		calc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		pnl.add(new JButton("+"));
-		pnl.add(new JButton("-"));
-		pnl.add(new JButton("*"));
-		pnl.add(new JButton("6"));
-
-
-		calc.getContentPane().add(BorderLayout.EAST,pnl);
-
 		calc.setVisible(true);
 	}
 }
